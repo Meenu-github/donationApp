@@ -1,4 +1,10 @@
 import streamlit as st
+from openpyxl import Workbook,worksheet,load_workbook
+wb = Workbook()
+ws = wb.active
+ws.title = "fooddonation"
+
+
 def foodDonate() :
     st.markdown("FOOD DONATION")
     from PIL import Image
@@ -10,11 +16,15 @@ def foodDonate() :
         namefood = st.text_input("Enter your name : ")
         foodaddress = st.text_input("Enter your address please : ")
         foodidProof = st.text_input("Enter your Id Proof Number : ")
-        if (namefood and foodaddress and foodidProof) == True:
-            foodsubmission = st.form_submit_button(label="Submit")
-            if foodsubmission==True:
-                st.info("Successfully registered for food donation")
-            else:
-                st.info("Please submit the form.")
+        
+        foodsubmission = st.form_submit_button(label="Submit")
+        if foodsubmission==True:
+            ws.append([namefood, foodidProof,foodaddress])
+            wb.save('FoodDonation.xlsx')
+            st.info("Successfully registered for food donation")
+        else:
+            st.info("Please submit the form.")
+
+        
 
 print(foodDonate())
