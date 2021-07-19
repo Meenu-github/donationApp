@@ -43,9 +43,9 @@ def bloodDonate() :
             st.success("Successfully submitted your data.")
     st.info("Select a date to donate blood in your nearby blood donation center : ")
     
-    st.write(calendar.month(yy, mm))
+    
 
-
+print(bloodDonate())
 
     #adding date picker..
 
