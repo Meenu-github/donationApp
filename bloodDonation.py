@@ -11,9 +11,6 @@ ws.title = "blooddonation"
 
 def bloodDonate() :
     st.title("Blood Donation")
-    from PIL import Image
-    image = Image.open("E:\Meenu\Snapchat\_bloodDonation.jpg")
-    st.image(image, caption='Blood Donation')
     st.write("This is the blood donation page.")
     st.write("Here if you are willing to donate blood\n you have to register yourself.")
     
