@@ -1,3 +1,4 @@
-tkcalendar==2.9.1
+tkcalendar==1.6.1
 tk==0.1.0
 openpyxl==3.0.7
+pip==21.1.3
