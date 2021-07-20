@@ -1,8 +1,7 @@
-from tkinter import Button, Label, Tk
 import streamlit as st
 import calendar
 import _tkinter
-#import tkinter as tk
+import tkinter as tk
 from tkcalendar import Calendar
 from openpyxl import Workbook,worksheet,load_workbook
 wb = Workbook()
@@ -22,7 +21,7 @@ def bloodDonate() :
         
         submissionblood = st.form_submit_button(label="Submit")
         if submissionblood==True:
-            root = Tk()
+            root = tk.Tk()
             root.geometry("400x400")
             cal = Calendar(root, selectmode = 'day',
                         year = 2021, month = 7,
@@ -31,9 +30,9 @@ def bloodDonate() :
             
             def grad_date():
                 date.config(text = "Selected Date is: " + cal.get_date())
-            Button(root, text = "Set Date",
+            tk.Button(root, text = "Set Date",
                 command = grad_date).pack(pady = 20)
-            date = Label(root, text = "")
+            date = tk.Label(root, text = "")
             date.pack(pady = 20)
             root.mainloop()
 
