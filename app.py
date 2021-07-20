@@ -1,9 +1,9 @@
 import streamlit as st
 from donationApp import bookDonation, bloodDonation, foodDonation, firstpage, loginPage
 st.title("Donation")
-st.markdown("## Welcome to the Donation page.")
+st.header(" Welcome to the Donation page.")
 
-st.header("Let us come together and donate something for the needy.")
+st.subheader("Let us come together and donate something for the needy.")
 menu = ["None", "Book Donation", "Blood Donation","Food Donation","Organization Login/Register"]
 
 choice = st.selectbox("Navigation", menu)
