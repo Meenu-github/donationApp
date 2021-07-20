@@ -4,10 +4,10 @@ from tkinter import *
 from tkcalendar import Calendar
 yy = 2021
 mm = 12
-#from openpyxl import Workbook,worksheet,load_workbook
-#wb = Workbook()
-#ws = wb.active
-#ws.title = "blooddonation"
+from openpyxl import Workbook,worksheet,load_workbook
+wb = Workbook()
+ws = wb.active
+ws.title = "blooddonation"
 
 def bloodDonate() :
     st.title("Blood Donation")
@@ -37,8 +37,8 @@ def bloodDonate() :
             date.pack(pady = 20)
             root.mainloop()
 
-            #ws.append([bloodname,bgrp,age,bloodidProof,cal.get_date()])
-            #wb.save('BloodDonation.xlsx')
+            ws.append([bloodname,bgrp,age,bloodidProof,cal.get_date()])
+            wb.save('BloodDonation.xlsx')
             
             st.success("Successfully submitted your data.")
     st.info("Select a date to donate blood in your nearby blood donation center : ")

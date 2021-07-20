@@ -1,8 +1,8 @@
 import streamlit as st
-#from openpyxl import Workbook,worksheet,load_workbook
-#wb = Workbook()
-#ws = wb.active
-#ws.title = "bookdonation"
+from openpyxl import Workbook,worksheet,load_workbook
+wb = Workbook()
+ws = wb.active
+ws.title = "bookdonation"
 def bookdonate() :
     st.markdown("BOOK DONATION")
     st.title("Welcome to the book donation page, your old book can bring light in someones future.\nCome let us donate books for needy one.\nYou don't have to walk and donate it you just have to register yourself and we will pick the book from your house address that will be provided.")
@@ -17,8 +17,8 @@ def bookdonate() :
         
         submissionbook = st.form_submit_button(label="Submit")
         if submissionbook==True:
-            #ws.append([bookname,address,bookidProof])
-            #wb.save('BookDonation.xlsx')
+            ws.append([bookname,address,bookidProof])
+            wb.save('BookDonation.xlsx')
             
             st.success("Successfully submitted the form.")
         else:
