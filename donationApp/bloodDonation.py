@@ -2,8 +2,6 @@ import streamlit as st
 import calendar
 from tkinter import *
 from tkcalendar import Calendar
-yy = 2021
-mm = 12
 from openpyxl import Workbook,worksheet,load_workbook
 wb = Workbook()
 ws = wb.active
@@ -31,7 +29,7 @@ def bloodDonate() :
             
             def grad_date():
                 date.config(text = "Selected Date is: " + cal.get_date())
-            Button(root, text = "Get Date",
+            Button(root, text = "Set Date",
                 command = grad_date).pack(pady = 20)
             date = Label(root, text = "")
             date.pack(pady = 20)
@@ -45,7 +43,7 @@ def bloodDonate() :
     
     
 
-print(bloodDonate())
+
 
     #adding date picker..
 
