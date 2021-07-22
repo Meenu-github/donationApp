@@ -2,6 +2,7 @@ import streamlit as st
 from openpyxl import Workbook,worksheet,load_workbook
 wb = Workbook()
 ws = wb.active
+maxrow= ws.max_row+1
 ws.title = "bookdonation"
 def bookdonate() :
     st.markdown("BOOK DONATION")
@@ -17,7 +18,11 @@ def bookdonate() :
         
         submissionbook = st.form_submit_button(label="Submit")
         if submissionbook==True:
-            ws.append([bookname,address,bookidProof])
+            ws.cell(row=maxrow,column=1).value = bookname
+            ws.cell(row=maxrow,column=2).value = address
+            ws.cell(row=maxrow,column=3).value = bookidProof
+            
+            
             wb.save('BookDonation.xlsx')
             
             st.success("Successfully submitted the form.")

@@ -1,9 +1,8 @@
 import streamlit as st
-import tkinter as tk
-from tkcalendar import Calendar
 from openpyxl import Workbook,worksheet,load_workbook
 wb = Workbook()
 ws = wb.active
+maxrow= ws.max_row+1
 ws.title = "blooddonation"
 
 def bloodDonate() :
@@ -16,31 +15,23 @@ def bloodDonate() :
         bgrp = st.text_input("Enter your blood group : ")
         age = st.slider(label="Enter your age ", min_value=18, max_value=45)
         bloodidProof =  st.text_input("Enter your Id Proof Number : ")
+        date = st.date_input(label="Date")
         
         submissionblood = st.form_submit_button(label="Submit")
         if submissionblood==True:
-            st.info("Select a date to donate blood in your nearby blood donation center : ")
-            root = tk.Tk()
-            root.geometry("400x400")
-            cal = Calendar(root, selectmode = 'day',
-                        year = 2021, month = 7,
-                       day = 31)
-            cal.pack(pady = 20)
             
-            def grad_date():
-                date.config(text = "Selected Date is: " + cal.get_date())
-            tk.Button(root, text = "Set Date",
-                command = grad_date).pack(pady = 20)
-            date = tk.Label(root, text = "")
-            date.pack(pady = 20)
-            root.mainloop()
-
-            ws.append([bloodname,bgrp,age,bloodidProof])
+            
+            ws.cell(row=maxrow,column=1).value = bloodname
+            ws.cell(row=maxrow,column=2).value = bgrp
+            ws.cell(row=maxrow,column=3).value = age
+            ws.cell(row=maxrow,column=4).value = bloodidProof
+            ws.cell(row=maxrow,column=5).value = date
+            
             wb.save('BloodDonation.xlsx')
             
             st.success("Successfully submitted your data. Thanks for registering.")
-            
-    
+
+print(bloodDonate())
     
 
 

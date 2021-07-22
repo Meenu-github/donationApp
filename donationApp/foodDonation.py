@@ -1,8 +1,9 @@
 import streamlit as st
-from openpyxl import Workbook,worksheet,load_workbook
-wb = Workbook()
+import openpyxl as pxl
+wb = pxl.load_workbook('FoodDonation.xlsx')
 ws = wb.active
-ws.title = "fooddonation"
+maxrow= ws.max_row+1
+#ws.title = "fooddonation"
 
 
 def foodDonate() :
@@ -16,7 +17,10 @@ def foodDonate() :
         
         foodsubmission = st.form_submit_button(label="Submit")
         if foodsubmission==True:
-            ws.append([namefood, foodidProof,foodaddress])
+            ws.cell(row=maxrow,column=1).value = namefood
+            ws.cell(row=maxrow,column=2).value = foodidProof
+            ws.cell(row=maxrow,column=3).value = foodaddress
+            
             wb.save('FoodDonation.xlsx')
             st.info("Successfully registered for food donation")
         else:
