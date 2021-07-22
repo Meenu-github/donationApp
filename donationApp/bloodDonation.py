@@ -1,9 +1,8 @@
 import streamlit as st
-from openpyxl import Workbook,worksheet,load_workbook
-wb = Workbook()
+import openpyxl as pxl
+wb = pxl.load_workbook('BloodDonation.xlsx')
 ws = wb.active
 maxrow= ws.max_row+1
-ws.title = "blooddonation"
 
 def bloodDonate() :
     st.title("Blood Donation")
