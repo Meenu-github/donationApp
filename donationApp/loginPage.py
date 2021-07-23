@@ -34,11 +34,13 @@ def loginPages():
             password = st.text_input("Password")
             submissionButton = st.form_submit_button(label="Login")
             if submissionButton==True:
-                proj = pd.read_excel('proj.xlsx',index_col=1)
-                if userName in proj:
-                    pas = pd.read_excel('proj.xlsx',index_col=2)
-                    if password in pas:
-                        st.success('Data found')
+                proj = pd.read_excel('proj.xlsx',index_col=2)
+                for z in range(maxrow):
+                    
+                    if userName in proj:
+                        pas = pd.read_excel('proj.xlsx',index_col=3)
+                        if password in pas:
+                            st.success('Data found')
 
                 st.success("Successfully login")
 
