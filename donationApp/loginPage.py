@@ -1,8 +1,8 @@
 import streamlit as st
 import openpyxl as pxl
 import pandas as pd
-import gspread
-from gspread_dataframe import get_as_dataframe 
+#import gspread
+#from gspread_dataframe import get_as_dataframe 
 #proj = pd.read_excel('proj.xlsx')
 exp = pxl.load_workbook('proj.xlsx')
 sheet = exp.active
@@ -99,9 +99,9 @@ def type(selectRole):
             st.info('YOU SELECTED NO.')
 
                     
-df = get_as_dataframe(sheet)
-st.write(df)
-st.table(df)
+#df = get_as_dataframe(sheet)
+#st.write(df)
+#st.table(df)
                             
 
                 
