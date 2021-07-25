@@ -18,8 +18,8 @@ def foodDonate() :
         foodsubmission = st.form_submit_button(label="Submit")
         if foodsubmission==True:
             ws.cell(row=maxrow,column=1).value = namefood
-            ws.cell(row=maxrow,column=2).value = foodidProof
-            ws.cell(row=maxrow,column=3).value = foodaddress
+            ws.cell(row=maxrow,column=2).value = foodaddress
+            ws.cell(row=maxrow,column=3).value = foodidProof
             
             wb.save('FoodDonation.xlsx')
             st.info("Successfully registered for food donation")
@@ -28,4 +28,4 @@ def foodDonate() :
 
         
 
-print(foodDonate())
+#print(foodDonate())
