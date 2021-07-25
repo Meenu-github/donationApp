@@ -16,45 +16,30 @@ maxrow = sheet.max_row+1
 def type(selectRole):
     if selectRole == 'Hospital':
         exp = pd.read_excel('../donationApp/BloodDonation.xlsx')
-        new = pxl.load_workbook('../donationApp/BloodDonation.xlsx')
-        newsheet = new.active
+        #new = pxl.load_workbook('../donationApp/BloodDonation.xlsx')
+        #newsheet = new.active
         #sheet = exp.active
         #maxrow = sheet.max_row+1
+        st.table(exp)
         
-        blooddata = ['Yes, I want Blood Donor data', 'No, I want Blood Donor data']
-        b = st.selectbox('Do you want data of blood donor :', blooddata, key='1')
-        if b == 'Yes, I want Blood Donor data':
-            st.table(exp)
-        if b == 'No, I want Blood Donor data':
-            st.info('YOU SELECTED NO.')
 
     if selectRole == 'Food Distributor':
         exp1 = pd.read_excel('../donationApp/FoodDonation.xlsx')
-        new = pxl.load_workbook('../donationApp/FoodDonation.xlsx')
-        newsheet = new.active
+        #new = pxl.load_workbook('../donationApp/FoodDonation.xlsx')
+        #newsheet = new.active
         #sheet = exp1.active
         #maxrow = sheet.max_row+1
+        st.table(exp1)
         
-        fooddata = ['Yes, I want Food Donor data', 'No, I don\'t Want Food Donor data']
-        b1 = st.selectbox('Do you want data of food donor :', fooddata, key='2')
-        if b1 == 'Yes, I want Food Donor data':
-            st.table(exp1)
-        if b1 == 'No, I don\'t Want Food Donor data':
-            st.info('YOU SELECTED NO.')
 
     if selectRole == 'Orphanage':
         exp2 = pd.read_excel('../donationApp/BookDonation.xlsx')
-        new = pxl.load_workbook('../donationApp/BookDonation.xlsx')
-        newsheet = new.active
+        #new = pxl.load_workbook('../donationApp/BookDonation.xlsx')
+        #newsheet = new.active
         #sheet = exp2.active
         #maxrow = sheet.max_row+1
+        st.table(exp2)
         
-        bookdata = ['Yes, I want book donor data', 'No, I dont want book donor data']
-        b2 = st.selectbox('Do you want data of book donor :', bookdata, key= '3' )
-        if b2 == 'Yes, I want book donor data':
-            st.table(exp2)
-        if b2 == 'No, I dont want book donor data':
-            st.info('YOU SELECTED NO.')
 
 
 def loginPages():
@@ -83,7 +68,16 @@ def loginPages():
             if submissionButton == True:
                 exp.save('../donationApp/proj.xlsx')
                 st.success("Successfully sign up")
+                #data = ['Yes, I want donor data', 'No, I don\'t want donor data']
+                #b2 = st.selectbox('Do you want data of book donor :', data)
+                #if b2 == 'Yes, I want donor data':
+                st.info('Giving data of donor')
+
                 type(selectRole)
+                #if b2 == 'No, I don\'t want donor data':
+                    #st.warning('YOU SELECTED NO.')
+
+                
 
     if page == 'Login' :
         with st.form(key="Login"):
@@ -98,8 +92,15 @@ def loginPages():
                         if((sheet.cell(row=i, column=3).value == password)):
                             y = sheet.cell(row=i, column=4).value
                             st.success('Successfully Login')
-                            
+                            #data = ['Yes, I want donor data', 'No, I don\'t want donor data']
+                            #b2 = st.selectbox('Do you want data of book donor :', data)
+                            #if b2 == 'Yes, I want donor data':
+                            st.info('Giving data of donor')
                             type(y)
+                            #if b2 == 'No, I don\'t want donor data':
+                                #st.warning('YOU SELECTED NO.')
+                            
+                            
 
                         else:
                             st.error(
