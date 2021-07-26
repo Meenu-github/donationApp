@@ -13,19 +13,18 @@ def foodDonate() :
     with st.form(key="Register for food donation"):
         namefood = st.text_input("Enter your name : ")
         foodaddress = st.text_input("Enter your address please : ")
-        foodidProof = st.text_input("Enter your Id Proof Number : ")
+        food_phone = st.text_input("Enter your phone  Number : ")
         
         foodsubmission = st.form_submit_button(label="Submit")
         if foodsubmission==True:
             ws.cell(row=maxrow,column=1).value = namefood
             ws.cell(row=maxrow,column=2).value = foodaddress
-            ws.cell(row=maxrow,column=3).value = foodidProof
+            ws.cell(row=maxrow,column=3).value = food_phone
             
             wb.save('FoodDonation.xlsx')
-            st.info("Successfully registered for food donation")
+            st.success("Successfully registered for food donation")
         else:
             st.info("Please submit the form.")
 
         
 
-#print(foodDonate())

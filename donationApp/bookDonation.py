@@ -14,13 +14,13 @@ def bookdonate() :
 
         bookname = st.text_input("Enter your name : ")
         address = st.text_input("Enter your address please : ")
-        bookidProof = st.text_input("Enter your Id Proof Number : ")
+        book_phone = st.text_input("Enter your phone Number : ")
         
         submissionbook = st.form_submit_button(label="Submit")
         if submissionbook==True:
             ws.cell(row=maxrow,column=1).value = bookname
             ws.cell(row=maxrow,column=2).value = address
-            ws.cell(row=maxrow,column=3).value = bookidProof
+            ws.cell(row=maxrow,column=3).value = book_phone
             
             
             wb.save('BookDonation.xlsx')
