@@ -57,7 +57,7 @@ def loginPages():
 
             submissionButton = st.form_submit_button(label="Sign up")
             if submissionButton == True:
-                exp.save('../donationApp/proj.xlsx')
+                exp.save('proj.xlsx')
                 st.success("Successfully sign up")
                 
                 st.info('Giving data of donor')
