@@ -67,7 +67,7 @@ def loginPages():
                 
 
     if page == 'Login' :
-        with st.form(key="Login"):
+        with st.form(key="Login") :
 
             userName = st.text_input("Username")
             password = st.text_input("Password", type="password")
