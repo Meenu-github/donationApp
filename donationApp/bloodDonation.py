@@ -10,7 +10,7 @@ maxrow= ws.max_row+1
 def bloodDonate() :
     st.title("Blood Donation")
     img = Image.open("_bloodDonation.jpg")
-    st.image(img, caption='Blood Donation', width=700)
+    st.image(img, caption='Blood Donation', width=500)
     st.write("This is the blood donation page.")
     st.write("Here if you are willing to donate blood\n you have to register yourself.")
     
