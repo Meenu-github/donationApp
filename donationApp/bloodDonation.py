@@ -1,11 +1,16 @@
+from os import read
 import streamlit as st
 import openpyxl as pxl
+from PIL import Image
+
 wb = pxl.load_workbook('BloodDonation.xlsx')
 ws = wb.active
 maxrow= ws.max_row+1
 
 def bloodDonate() :
     st.title("Blood Donation")
+    img = Image.open("_bloodDonation.jpg")
+    st.image(img, caption='Blood Donation', width=1000)
     st.write("This is the blood donation page.")
     st.write("Here if you are willing to donate blood\n you have to register yourself.")
     
