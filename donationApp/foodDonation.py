@@ -1,6 +1,8 @@
 import streamlit as st
 import openpyxl as pxl
 from PIL import Image
+#import streamlit as st
+import base64
 
 wb = pxl.load_workbook('FoodDonation.xlsx')
 ws = wb.active
@@ -9,6 +11,19 @@ maxrow= ws.max_row+1
 
 
 def foodDonate() :
+    st.title("Blood Donation")
+    main_bg = "food.gif"
+    main_bg_ext = "gif"
+    st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
     st.markdown("FOOD DONATION")
     img = Image.open("FoodDonation.jpg")
     st.image(img, caption='Food Donation',width=500)

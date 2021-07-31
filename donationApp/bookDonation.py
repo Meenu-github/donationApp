@@ -1,17 +1,32 @@
 import streamlit as st
 import openpyxl as pxl
 from PIL import Image
+#import streamlit as st
+import base64
 
 wb = pxl.load_workbook('BookDonation.xlsx')
 ws = wb.active
 maxrow= ws.max_row+1
 
 def bookdonate():
+    st.title("Blood Donation")
+    main_bg = "book.gif"
+    main_bg_ext = "gif"
+    st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
     st.markdown("BOOK DONATION")
     img = Image.open("BookDonation.jpg")
     st.image(img, caption='Book Donation',width=700)
-    st.title("Welcome to the book donation page, your old book can bring light in someones future.\nCome let us donate books for needy one.\nYou don't have to walk and donate it you just have to register yourself and we will pick the book from your house address that will be provided.")
-    st.write("Here if you are willing to donate book\n you have to register yourself.")
+    st.title("# Welcome to the book donation page, your old book can bring light in someones future.\nCome let us donate books for needy one.\nYou don't have to walk and donate it you just have to register yourself and we will pick the book from your house address that will be provided.")
+    st.markdown("## Here if you are willing to donate book\n you have to register yourself.")
     
     with st.form(key="Registration for Blood Donation"):
     
