@@ -10,7 +10,7 @@ maxrow= ws.max_row+1
 
 def bookdonate():
     st.title("Book Donation")
-    main_bg = "book.gif"
+    main_bg = "book1.gif"
     main_bg_ext = "gif"
     st.markdown(
     f"""
