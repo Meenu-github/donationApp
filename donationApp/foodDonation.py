@@ -11,7 +11,7 @@ maxrow= ws.max_row+1
 
 
 def foodDonate() :
-    st.title("Blood Donation")
+    st.title("Food Donation")
     main_bg = "food.gif"
     main_bg_ext = "gif"
     st.markdown(
@@ -19,6 +19,7 @@ def foodDonate() :
     <style>
     .reportview-container {{
         background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+        
     }}
     </style>
     """,
