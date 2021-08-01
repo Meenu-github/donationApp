@@ -1,19 +1,23 @@
+from donationApp.bloodDonation import addData
 import streamlit as st
 import openpyxl as pxl
 import pandas as pd
 #import streamlit as st
 import base64
+import sys
+import pyodbc as odbc
 
-#import gspread
-#from gspread_dataframe import get_as_dataframe 
-#proj = pd.read_excel('proj.xlsx')
-#exp = pxl.load_workbook('../donationApp/proj.xlsx')
+DRIVER = "SQL Server"
+SERVER_NAME = "MEENU\SQLEXPRESS"
+DATABASE_NAME="StreamLit"
+cnxn = f"""
+    Driver={{{DRIVER}}};
+    Server={SERVER_NAME};
+    Database={DATABASE_NAME};
+    Trusted_Connection=yes;
+"""
 
-projDemo = pd.read_excel('proj.xlsx')
-exp = pxl.load_workbook('proj.xlsx')
-sheet = exp.active
-maxrow = sheet.max_row+1
-#sheet = exp['Sheet2']
+records = []
 
 def type(selectRole):
     st.title("Blood Donation")
@@ -30,21 +34,20 @@ def type(selectRole):
     unsafe_allow_html=True
 )
     if selectRole == 'Hospital':
-        exp = pd.read_excel('BloodDonation.xlsx')
-        
-        st.table(exp)
-        
 
+        tabl = pd.read_sql_query('SELECT * From Blood_Donation',DRIVER)
+        st.write(tabl)
+    
     if selectRole == 'Food Distributor':
-        exp1 = pd.read_excel('FoodDonation.xlsx')
         
-        st.table(exp1)
+        tabl = pd.read_sql_query('SELECT * From Food_Donation',DRIVER)
+        st.write(tabl)
         
 
     if selectRole == 'Orphanage':
-        exp2 = pd.read_excel('BookDonation.xlsx')
-        
-        st.table(exp2)
+      
+        tabl = pd.read_sql_query('SELECT * From Book_Donation',DRIVER)
+        st.table(tabl)
         
 
 
@@ -76,17 +79,14 @@ def loginPages():
                 pass
             else:
                 st.warning("password do not match with confirm password")
-               
-
-            sheet.cell(row=maxrow, column=1).value = userName
-            sheet.cell(row=maxrow, column=2).value = email
-            sheet.cell(row=maxrow, column=3).value = password
-            sheet.cell(row=maxrow, column=4).value = selectRole
-
+                      
             submissionButton = st.form_submit_button(label="Sign up")
             if submissionButton == True:
-                exp.save('proj.xlsx')
+              
+                records.append([userName,email,password,selectRole])
                 st.success("Successfully sign up")
+
+                addData()
                 
                 st.info('Giving data of donor')
 
@@ -101,22 +101,50 @@ def loginPages():
             password = st.text_input("Password", type="password")
             submissionButton = st.form_submit_button(label="Login")
             if submissionButton == True:
+                match = """
+                    SELECT Orole FROM Organization WHERE email==userName AND pass==password
+                    """
 
-                for i in range(2, sheet.max_row):
-                    if((sheet.cell(row=i, column=2).value == userName)):
-                        if((sheet.cell(row=i, column=3).value == password)):
-                            y = sheet.cell(row=i, column=4).value
-                            st.success('Successfully Login')
-                            
-                            st.info('Giving data of donor')
-                            type(y)
+                if match==True:
+                    type(match)
                             
                             
                             
 
-                        else:
-                            st.error(
-                                "either username or password is incorrect")
+            else:
+                st.error(
+                    "either username or password is incorrect")
+
+def addData():
+    try:
+        conn = odbc.connect(cnxn)
+    except Exception as e:
+        print(e)
+        print("task is terminated")
+        sys.exit()
+    else:
+        cursor = conn.cursor()
+    insert_statement = """
+        INSERT INTO Organization
+        VALUES (?, ?, ?, ?)
+    """
+    try:
+        for record in records:
+            print(record)
+            cursor.execute(insert_statement, record)
+    except Exception as e:
+        cursor.rollback()
+        print(e)
+
+    else:
+        print("Successfully inserted")
+        cursor.commit()
+        cursor.close()
+
+    #finally:
+    #    if conn.connected ==1:
+    #        print("connection closed")
+    #        conn.closed()
 
 
 

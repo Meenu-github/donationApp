@@ -3,10 +3,22 @@ import openpyxl as pxl
 from PIL import Image
 #import streamlit as st
 import base64
+import sys
+import pyodbc as odbc
+records = []
+DRIVER = "SQL Server"
+SERVER_NAME = "MEENU\SQLEXPRESS"
+DATABASE_NAME="StreamLit"
+cnxn = f"""
+    Driver={{{DRIVER}}};
+    Server={SERVER_NAME};
+    Database={DATABASE_NAME};
+    Trusted_Connection=yes;
+"""
 
-wb = pxl.load_workbook('FoodDonation.xlsx')
-ws = wb.active
-maxrow= ws.max_row+1
+#wb = pxl.load_workbook('FoodDonation.xlsx')
+#ws = wb.active
+#maxrow= ws.max_row+1
 #ws.title = "fooddonation"
 
 
@@ -37,14 +49,50 @@ def foodDonate() :
         
         foodsubmission = st.form_submit_button(label="Submit")
         if foodsubmission==True:
-            ws.cell(row=maxrow,column=1).value = namefood
-            ws.cell(row=maxrow,column=2).value = foodaddress
-            ws.cell(row=maxrow,column=3).value = food_phone
+            #ws.cell(row=maxrow,column=1).value = namefood
+            #ws.cell(row=maxrow,column=2).value = foodaddress
+            #ws.cell(row=maxrow,column=3).value = food_phone
             
-            wb.save('FoodDonation.xlsx')
+            #wb.save('FoodDonation.xlsx')
+            records.append([namefood,foodaddress,food_phone])
+            addData()
             st.success("Successfully registered for food donation")
         else:
             st.info("Please submit the form.")
+
+def addData():
+    try:
+        conn = odbc.connect(cnxn)
+    except Exception as e:
+        print(e)
+        print("task is terminated")
+        sys.exit()
+    else:
+        cursor = conn.cursor()
+    insert_statement = """
+        INSERT INTO Food_Donation
+        VALUES (?, ?, ?)
+    """
+    try:
+        for record in records:
+            print(record)
+            cursor.execute(insert_statement, record)
+    except Exception as e:
+        cursor.rollback()
+        print(e.value)
+
+    else:
+        print("Successfully inserted")
+        cursor.commit()
+        cursor.close()
+
+    finally:
+        if conn.connected ==1:
+            print("connection closed")
+            conn.closed()
+
+
+
 
         
 

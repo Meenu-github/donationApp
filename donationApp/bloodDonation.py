@@ -2,14 +2,26 @@ from os import read
 import streamlit as st
 import openpyxl as pxl
 from PIL import Image
+import sys
+import pyodbc as odbc
 #import streamlit as st
 import base64
+records = []
+DRIVER = "SQL Server"
+SERVER_NAME = "MEENU\SQLEXPRESS"
+DATABASE_NAME="StreamLit"
+cnxn = f"""
+    Driver={{{DRIVER}}};
+    Server={SERVER_NAME};
+    Database={DATABASE_NAME};
+    Trusted_Connection=yes;
+"""
 
 
 
-wb = pxl.load_workbook('BloodDonation.xlsx')
-ws = wb.active
-maxrow= ws.max_row+1
+#wb = pxl.load_workbook('BloodDonation.xlsx')
+#ws = wb.active
+#maxrow= ws.max_row+1
 
 def bloodDonate() :
     st.title("Blood Donation")
@@ -42,19 +54,48 @@ def bloodDonate() :
         if submissionblood==True:
             
             
-            ws.cell(row=maxrow,column=1).value = bloodname
-            ws.cell(row=maxrow,column=2).value = bgrp
-            ws.cell(row=maxrow,column=3).value = age
-            ws.cell(row=maxrow,column=4).value = blood_phone
-            ws.cell(row=maxrow,column=5).value = date
+            #ws.cell(row=maxrow,column=1).value = bloodname
+            #ws.cell(row=maxrow,column=2).value = bgrp
+            #ws.cell(row=maxrow,column=3).value = age
+            #ws.cell(row=maxrow,column=4).value = blood_phone
+            #ws.cell(row=maxrow,column=5).value = date
             
-            wb.save('BloodDonation.xlsx')
-            
+            #wb.save('BloodDonation.xlsx')
+            records.append([bloodname,bgrp,age,blood_phone,date])
+            addData()
+
             st.success("Successfully submitted your data. Thanks for registering.")
 
+def addData():
+    try:
+        conn = odbc.connect(cnxn)
+    except Exception as e:
+        print(e)
+        print("task is terminated")
+        sys.exit()
+    else:
+        cursor = conn.cursor()
+    insert_statement = """
+        INSERT INTO Blood_Donation
+        VALUES (?, ?, ?, ?, ?)
+    """
+    try:
+        for record in records:
+            print(record)
+            cursor.execute(insert_statement, record)
+    except Exception as e:
+        cursor.rollback()
+        print(e.value)
 
-    
+    else:
+        print("Successfully inserted")
+        cursor.commit()
+        cursor.close()
 
+    finally:
+        if conn.connected ==1:
+            print("connection closed")
+            conn.closed()
 
 
     #adding date picker..
