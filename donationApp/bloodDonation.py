@@ -69,17 +69,14 @@ def addData():
             cursor.execute(insert_statement, record)
     except Exception as e:
         cursor.rollback()
-        print(e.value)
+        print(e)
 
     else:
         print("Successfully inserted")
         cursor.commit()
         cursor.close()
 
-    finally:
-        if conn.connected ==1:
-            print("connection closed")
-            conn.closed()
+    
 
 
     #adding date picker..

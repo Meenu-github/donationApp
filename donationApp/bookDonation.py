@@ -72,7 +72,7 @@ def addData():
             cursor.execute(insert_statement, record)
     except Exception as e:
         cursor.rollback()
-        print(e.value)
+        print(e)
 
     else:
         print("Successfully inserted")
