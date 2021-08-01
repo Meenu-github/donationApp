@@ -1,14 +1,9 @@
 import streamlit as st
-import openpyxl as pxl
 from PIL import Image
 import sys
 import pyodbc as odbc
-#import streamlit as st
 import base64
 
-#wb = pxl.load_workbook('BookDonation.xlsx')
-#ws = wb.active
-#maxrow= ws.max_row+1
 records = []
 DRIVER = "SQL Server"
 SERVER_NAME = "MEENU\SQLEXPRESS"
@@ -52,12 +47,7 @@ def bookdonate():
         submissionbook = st.form_submit_button(label="Submit")
         if submissionbook==True:
             records.append([bookname,address,book_phone])
-            #ws.cell(row=maxrow,column=1).value = bookname
-            #ws.cell(row=maxrow,column=2).value = address
-            #ws.cell(row=maxrow,column=3).value = book_phone
             
-            
-            #wb.save('BookDonation.xlsx')
             addData()
             
             st.success("Successfully submitted the form.")
@@ -89,7 +79,4 @@ def addData():
         cursor.commit()
         cursor.close()
 
-    #finally:
-    #    if conn.connected ==1:
-    #        print("connection closed")
-    #        conn.close()
+    

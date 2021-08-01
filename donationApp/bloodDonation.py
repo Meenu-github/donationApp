@@ -1,6 +1,5 @@
 from os import read
 import streamlit as st
-import openpyxl as pxl
 from PIL import Image
 import sys
 import pyodbc as odbc
@@ -16,12 +15,6 @@ cnxn = f"""
     Database={DATABASE_NAME};
     Trusted_Connection=yes;
 """
-
-
-
-#wb = pxl.load_workbook('BloodDonation.xlsx')
-#ws = wb.active
-#maxrow= ws.max_row+1
 
 def bloodDonate() :
     st.title("Blood Donation")
@@ -52,15 +45,7 @@ def bloodDonate() :
         
         submissionblood = st.form_submit_button(label="Submit")
         if submissionblood==True:
-            
-            
-            #ws.cell(row=maxrow,column=1).value = bloodname
-            #ws.cell(row=maxrow,column=2).value = bgrp
-            #ws.cell(row=maxrow,column=3).value = age
-            #ws.cell(row=maxrow,column=4).value = blood_phone
-            #ws.cell(row=maxrow,column=5).value = date
-            
-            #wb.save('BloodDonation.xlsx')
+        
             records.append([bloodname,bgrp,age,blood_phone,date])
             addData()
 

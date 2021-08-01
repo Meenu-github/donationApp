@@ -1,7 +1,5 @@
 import streamlit as st
-import openpyxl as pxl
 from PIL import Image
-#import streamlit as st
 import base64
 import sys
 import pyodbc as odbc
@@ -15,12 +13,6 @@ cnxn = f"""
     Database={DATABASE_NAME};
     Trusted_Connection=yes;
 """
-
-#wb = pxl.load_workbook('FoodDonation.xlsx')
-#ws = wb.active
-#maxrow= ws.max_row+1
-#ws.title = "fooddonation"
-
 
 def foodDonate() :
     st.title("Food Donation")
@@ -49,11 +41,7 @@ def foodDonate() :
         
         foodsubmission = st.form_submit_button(label="Submit")
         if foodsubmission==True:
-            #ws.cell(row=maxrow,column=1).value = namefood
-            #ws.cell(row=maxrow,column=2).value = foodaddress
-            #ws.cell(row=maxrow,column=3).value = food_phone
             
-            #wb.save('FoodDonation.xlsx')
             records.append([namefood,foodaddress,food_phone])
             addData()
             st.success("Successfully registered for food donation")
@@ -86,10 +74,7 @@ def addData():
         cursor.commit()
         cursor.close()
 
-    finally:
-        if conn.connected ==1:
-            print("connection closed")
-            conn.closed()
+    
 
 
 

@@ -1,8 +1,6 @@
 from donationApp.bloodDonation import addData
 import streamlit as st
-import openpyxl as pxl
 import pandas as pd
-#import streamlit as st
 import base64
 import sys
 import pyodbc as odbc
@@ -141,12 +139,7 @@ def addData():
         cursor.commit()
         cursor.close()
 
-    #finally:
-    #    if conn.connected ==1:
-    #        print("connection closed")
-    #        conn.closed()
-
-
+    
 
 
 
