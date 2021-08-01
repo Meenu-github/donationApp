@@ -1,9 +1,8 @@
-from os import read
 import streamlit as st
 from PIL import Image
 import sys
 import pyodbc as odbc
-#import streamlit as st
+
 import base64
 records = []
 DRIVER = "SQL Server"
