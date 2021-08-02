@@ -100,11 +100,9 @@ def loginPages():
                       
             submissionButton = st.form_submit_button(label="Sign up")
             if submissionButton == True:
-              
-                records.append([userName,email,passw,selectRole])
                 st.success("Successfully sign up")
 
-                addData()
+                addData(userName,email,passw,selectRole)
                 
                 st.info('Giving data of donor')
 
@@ -119,7 +117,7 @@ def loginPages():
             passw = st.text_input("Password", type="password")
             submissionButton = st.form_submit_button(label="Login")
             if submissionButton == True:
-                match = 'SELECT Orole FROM Organization WHERE email='" + userName + "' AND password= '"+ passw+"''
+                match = 'SELECT Orole FROM Organization WHERE email='"+ userName + "' AND password= '"+ passw+"''
                 
 
                 if match!=None:
@@ -128,21 +126,14 @@ def loginPages():
                 else:
                     st.error("either username or password is incorrect")
 
-def addData():
+def addData(a,b,c,d):
     
     conn = odbc.connect(cnxn)
     cursor = conn.cursor()
-    insert_statement = """
-        INSERT INTO Organization
-        VALUES (?, ?, ?, ?)
-    """
+    cursor.execute('INSERT INTO Organization VALUES (?,?,?,?);', (a,b,c,d))
     
-    for record in records:
-        print(record)
-        cursor.execute(insert_statement, record)
-    
-    print("Successfully inserted")
-    cursor.commit()
+    st.success("Successfully inserted")
+    #cursor.commit()
     cursor.close()
 
     

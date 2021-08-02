@@ -45,25 +45,18 @@ def bloodDonate() :
         
         submissionblood = st.form_submit_button(label="Submit")
         if submissionblood==True:
-        
-            records.append([bloodname,bgrp,age,blood_phone,date])
-            addData()
+            addData(bloodname,bgrp,age,blood_phone,date)
 
-            st.success("Successfully submitted your data. Thanks for registering.")
+            
 
-def addData():
+def addData(a,b,c,d,e):
     
     conn = odbc.connect(cnxn)
     cursor = conn.cursor()
-    insert_statement = """
-        INSERT INTO Blood_Donation
-        VALUES (?, ?, ?, ?, ?)
-    """
-    for record in records:
-        print(record)
-        cursor.execute(insert_statement, record)
-    print("Successfully inserted")
-    cursor.commit()
+    
+    cursor.execute(" INSERT INTO Blood_Donation VALUES (?, ?, ?, ?, ?);", (a,b,c,d,e))
+    st.success("Successfully inserted")
+    #cursor.commit()
     cursor.close()
 
     

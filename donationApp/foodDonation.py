@@ -41,26 +41,18 @@ def foodDonate() :
         
         foodsubmission = st.form_submit_button(label="Submit")
         if foodsubmission==True:
+            addData(namefood,foodaddress,food_phone)
             
-            records.append([namefood,foodaddress,food_phone])
-            addData()
-            st.success("Successfully registered for food donation")
         else:
             st.info("Please submit the form.")
 
-def addData():
+def addData(a,b,c):
 
     conn = odbc.connect(cnxn)
     cursor = conn.cursor()
-    insert_statement = """
-        INSERT INTO Food_Donation
-        VALUES (?, ?, ?)
-    """
-    for record in records:
-        print(record)
-        cursor.execute(insert_statement, record)
-    print("Successfully inserted")
-    cursor.commit()
+    cursor.execute('INSERT INTO Food_Donation VALUES (?, ?, ?);', (a,b,c))
+    st.success("Successfully inserted")
+    #cursor.commit()
     cursor.close()
 
     

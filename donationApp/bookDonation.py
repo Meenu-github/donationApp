@@ -45,29 +45,18 @@ def bookdonate():
         book_phone = st.text_input("Enter your phone Number : ")
         
         submissionbook = st.form_submit_button(label="Submit")
-        if submissionbook==True:
-            records.append([bookname,address,book_phone])
-            
-            addData()
-            
-            st.success("Successfully submitted the form.")
+        if submissionbook==True:         
+            addData(bookname,address,book_phone)
         else:
             st.info("Please submit the form.")
-def addData():
+def addData(a,b,c):
 
     conn = odbc.connect(cnxn)
     cursor = conn.cursor()
-    insert_statement = """
-        INSERT INTO Book_Donation
-        VALUES (?, ?, ?)
-    """
-    cursor = conn.cursor()
-    for record in records:
-        print(record)
-        cursor.execute(insert_statement, record)
+    cursor.execute('INSERT INTO Book_Donation VALUES (?, ?, ?)', (a,b,c))
 
-    print("Successfully inserted")
-    cursor.commit()
+    st.success("Successfully inserted")
+    #cursor.commit()
     cursor.close()
 
     
