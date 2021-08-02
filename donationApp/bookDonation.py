@@ -54,30 +54,20 @@ def bookdonate():
         else:
             st.info("Please submit the form.")
 def addData():
-    try:
-        conn = odbc.connect(cnxn)
-    except Exception as e:
-        st.error(e)
-        st.error("task is terminated")
-        #sys.exit()
-    else:
-        cursor = conn.cursor()
+
+    conn = odbc.connect(cnxn)
+    cursor = conn.cursor()
     insert_statement = """
         INSERT INTO Book_Donation
         VALUES (?, ?, ?)
     """
-    try:
-        cursor = conn.cursor()
-        for record in records:
-            print(record)
-            cursor.execute(insert_statement, record)
-    except Exception as e:
-        cursor.rollback()
-        print(e)
+    cursor = conn.cursor()
+    for record in records:
+        print(record)
+        cursor.execute(insert_statement, record)
 
-    else:
-        print("Successfully inserted")
-        cursor.commit()
-        cursor.close()
+    print("Successfully inserted")
+    cursor.commit()
+    cursor.close()
 
     
