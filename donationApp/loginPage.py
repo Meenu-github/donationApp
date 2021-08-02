@@ -5,7 +5,7 @@ import base64
 import sys
 import pyodbc as odbc
 
-DRIVER = "ODBC Driver 13 for SQL Server"
+DRIVER = "SQL Server"
 SERVER_NAME = "MEENU\SQLEXPRESS"
 DATABASE_NAME="StreamLit"
 cnxn = f"""
@@ -129,30 +129,21 @@ def loginPages():
                     st.error("either username or password is incorrect")
 
 def addData():
-    try:
-        conn = odbc.connect(cnxn)
-    except Exception as e:
-        print(e)
-        print("task is terminated")
-        sys.exit()
-    else:
-        cursor = conn.cursor()
+    
+    conn = odbc.connect(cnxn)
+    cursor = conn.cursor()
     insert_statement = """
         INSERT INTO Organization
         VALUES (?, ?, ?, ?)
     """
-    try:
-        for record in records:
-            print(record)
-            cursor.execute(insert_statement, record)
-    except Exception as e:
-        cursor.rollback()
-        print(e)
-
-    else:
-        print("Successfully inserted")
-        cursor.commit()
-        cursor.close()
+    
+    for record in records:
+        print(record)
+        cursor.execute(insert_statement, record)
+    
+    print("Successfully inserted")
+    cursor.commit()
+    cursor.close()
 
     
 

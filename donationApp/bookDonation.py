@@ -5,7 +5,7 @@ import pyodbc as odbc
 import base64
 
 records = []
-DRIVER = "ODBC Driver 13 for SQL Server"
+DRIVER = "SQL Server"
 SERVER_NAME = "MEENU\SQLEXPRESS"
 DATABASE_NAME="StreamLit"
 cnxn = f"""
@@ -67,6 +67,7 @@ def addData():
         VALUES (?, ?, ?)
     """
     try:
+        cursor = conn.cursor()
         for record in records:
             print(record)
             cursor.execute(insert_statement, record)
