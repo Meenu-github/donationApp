@@ -5,7 +5,7 @@ import base64
 import sys
 import pyodbc as odbc
 
-DRIVER = "Microsoft SQL Server"
+DRIVER = "SQL Server"
 SERVER_NAME = "MEENU\SQLEXPRESS"
 DATABASE_NAME="StreamLit"
 cnxn = f"""
