@@ -57,9 +57,9 @@ def addData():
     try:
         conn = odbc.connect(cnxn)
     except Exception as e:
-        print(e)
-        print("task is terminated")
-        sys.exit()
+        st.error(e)
+        st.error("task is terminated")
+        #sys.exit()
     else:
         cursor = conn.cursor()
     insert_statement = """
