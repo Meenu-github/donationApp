@@ -5,15 +5,16 @@ import base64
 import sys
 import pyodbc as odbc
 
-#DRIVER = "StreamLit"
-#SERVER_NAME = "MEENU\SQLEXPRESS"
-#DATABASE_NAME="StreamLit"
-#cnxn = f"""
- #   DSN={{{DRIVER}}};
- #   Server={SERVER_NAME};
- #   Database={DATABASE_NAME};
- #   Trusted_Connection=yes;
-#"""
+
+DRIVER = "ODBC Driver 17 for SQL Server"
+SERVER_NAME = "tcp:MEENU\SQLEXPRESS.database.windows.net"
+DATABASE_NAME="StreamLit"
+cnxn = f"""
+    Driver={{{DRIVER}}};
+    Server={SERVER_NAME};
+    Database={DATABASE_NAME};
+    Trusted_Connection=yes;
+"""
 
 records = []
 
@@ -128,7 +129,7 @@ def loginPages():
 
 def addData(a,b,c,d):
     
-    conn = odbc.connect(DSN="StreamLit;Trusted_Connection=yes;")
+    conn = odbc.connect(cnxn)
     cursor = conn.cursor()
     cursor.execute('INSERT INTO Organization VALUES (?,?,?,?);', (a,b,c,d))
     

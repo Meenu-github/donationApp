@@ -5,17 +5,16 @@ import pyodbc as odbc
 import base64
 
 records = []
-"""
 DRIVER = "ODBC Driver 17 for SQL Server"
-SERVER_NAME = "MEENU\SQLEXPRESS"
+SERVER_NAME = "tcp:MEENU\SQLEXPRESS.database.windows.net"
 DATABASE_NAME="StreamLit"
 cnxn = f"""
-#    Driver={{{DRIVER}}};
-#    Server={SERVER_NAME};
-#    Database={DATABASE_NAME};
-#    Trusted_Connection=yes;
+    Driver={{{DRIVER}}};
+    Server={SERVER_NAME};
+    Database={DATABASE_NAME};
+    Trusted_Connection=yes;
 """
-"""
+
 
 def bookdonate():
     
@@ -51,8 +50,8 @@ def bookdonate():
         else:
             st.info("Please submit the form.")
 def addData(a,b,c):
-    conn = odbc.connect(DSN="StreamLit;Trusted_Connection=yes;")
-    #conn = odbc.connect(cnxn)
+
+    conn = odbc.connect(cnxn)
     cursor = conn.cursor()
     cursor.execute('INSERT INTO Book_Donation VALUES (?, ?, ?)', (a,b,c))
 
