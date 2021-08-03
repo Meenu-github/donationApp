@@ -6,15 +6,7 @@ import pyodbc as odbc
 import base64
 
 records = []
-DRIVER = "ODBC Driver 17 for SQL Server"
-SERVER_NAME = "MEENU\SQLEXPRESS"
-DATABASE_NAME="StreamLit"
-cnxn = f"""
-    Driver={{{DRIVER}}};
-    Server={SERVER_NAME};
-    Database={DATABASE_NAME};
-    Trusted_Connection=yes;
-"""
+
 
 def bloodDonate() :
     st.title("Blood Donation")
@@ -51,7 +43,7 @@ def bloodDonate() :
 
 def addData(a,b,c,d,e):
     
-    conn = odbc.connect(cnxn)
+    conn = odbc.connect(DSN="StreamLit;Trusted_Connection=yes;")
     cursor = conn.cursor()
     
     cursor.execute(" INSERT INTO Blood_Donation VALUES (?, ?, ?, ?, ?);", (a,b,c,d,e))

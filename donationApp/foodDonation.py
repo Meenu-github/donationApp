@@ -4,15 +4,7 @@ import base64
 import sys
 import pyodbc as odbc
 records = []
-DRIVER = "ODBC Driver 17 for SQL Server"
-SERVER_NAME = "MEENU\SQLEXPRESS"
-DATABASE_NAME="StreamLit"
-cnxn = f"""
-    Driver={{{DRIVER}}};
-    Server={SERVER_NAME};
-    Database={DATABASE_NAME};
-    Trusted_Connection=yes;
-"""
+
 
 def foodDonate() :
     st.title("Food Donation")
@@ -47,8 +39,8 @@ def foodDonate() :
             st.info("Please submit the form.")
 
 def addData(a,b,c):
-
-    conn = odbc.connect(cnxn)
+    conn = odbc.connect(DSN="StreamLit;Trusted_Connection=yes;")
+#    conn = odbc.connect(cnxn)
     cursor = conn.cursor()
     cursor.execute('INSERT INTO Food_Donation VALUES (?, ?, ?);', (a,b,c))
     st.success("Successfully inserted")
