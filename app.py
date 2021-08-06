@@ -2,15 +2,14 @@ import streamlit as st
 from donationApp import bookDonation, bloodDonation, foodDonation, firstpage, loginPage
 #import streamlit as st
 import base64
-
-
-main_bg = "round-sphere-moving-animated-gif-11.gif"
+main_bg = "book1.gif"
 main_bg_ext = "gif"
 st.markdown(
     f"""
     <style>
     .reportview-container {{
         background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+        background-position: center; background-size: cover; background-repeat: no repeat;
     }}
     </style>
     """,
