@@ -90,8 +90,6 @@ def loginPages():
                       
             submissionButton = st.form_submit_button(label="Sign up")
             if submissionButton == True:
-                st.success("Successfully sign up")
-
                 addData(userName,email,passw,selectRole)
                 
                 st.info('Giving data of donor')
@@ -107,11 +105,16 @@ def loginPages():
             passw = st.text_input("Password", type="password")
             submissionButton = st.form_submit_button(label="Login")
             if submissionButton == True:
-                match = "SELECT ROL_E FROM organization WHERE EMAIL==userName AND PASSW==passw"
-                
+                 
+                retrieved_data = cur.execute("SELECT * FROM organization ")
+                for i in retrieved_data:
+                    if i[1]==userName and i[2]==passw:
+                        retrieved_role = i[3]
+                        break
 
-                if match!=None:
-                    type(match)
+                
+                if retrieved_role!=None:
+                    type(retrieved_role)
                             
                 else:
                     st.error("either username or password is incorrect")
