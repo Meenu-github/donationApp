@@ -1,13 +1,11 @@
-from donationApp.bloodDonation import addData
 import streamlit as st
-#import pandas as pd
 import base64
 import sqlite3
 conn = sqlite3.connect('data.db',check_same_thread=False)
 cur = conn.cursor()
 
 def type(selectRole):
-    #st.title("Blood Donation")
+    
     main_bg = "black-and-white-gif-background-8.gif"
     main_bg_ext = "gif"
     st.markdown(
@@ -15,7 +13,7 @@ def type(selectRole):
     <style>
     .reportview-container {{
         background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-        background-position: center; background-repeat: no-repeat;background-size: cover;
+        
     }}
     </style>
     """,
@@ -54,13 +52,9 @@ def type(selectRole):
         st.table(output)
         
         cursor.close()
-        #tabl = pd.read_sql_query('SELECT * From Book_Donation',DRIVER)
-        #st.table(tabl)
-        
-
-
+             
 def loginPages():
-    #st.title("Blood Donation")
+    
     main_bg = "black-and-white-gif-background-8.gif"
     main_bg_ext = "gif"
     st.markdown(

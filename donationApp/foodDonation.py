@@ -5,8 +5,7 @@ import sqlite3
 conn = sqlite3.connect('data.db',check_same_thread=False)
 cur = conn.cursor()
 def foodDonate() :
-    st.title("Food Donation")
-    main_bg = "food.gif"
+    main_bg = "black-and-white-gif-background-8.gif"
     main_bg_ext = "gif"
     st.markdown(
     f"""
@@ -19,6 +18,8 @@ def foodDonate() :
     """,
     unsafe_allow_html=True
 )
+    st.title("Food Donation")
+    
     st.markdown("FOOD DONATION")
     img = Image.open("FoodDonation.jpg")
     st.image(img, caption='Food Donation',width=500)

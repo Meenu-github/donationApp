@@ -7,20 +7,22 @@ cur = conn.cursor()
 
 
 def bloodDonate() :
-    st.title("Blood Donation")
-    main_bg = "blood.gif"
+    main_bg = "black-and-white-gif-background-8.gif"
     main_bg_ext = "gif"
     st.markdown(
     f"""
     <style>
     .reportview-container {{
         background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-        background-position: center; background-repeat: no-repeat;background-size: cover;
+        
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
+    st.title("Blood Donation")
+    
+    
 
     img = Image.open("_bloodDonation.jpg")
     st.image(img, caption='Blood Donation', width=500)
@@ -52,5 +54,5 @@ def addData(a,b,c,d,e):
     
 
 
-    #adding date picker..
+    
 

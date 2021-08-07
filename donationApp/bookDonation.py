@@ -7,20 +7,22 @@ cur = conn.cursor()
 
 
 def bookdonate():
-    
-    st.title("Book Donation")
-    main_bg = "book1.gif"
+    main_bg = "black-and-white-gif-background-8.gif"
     main_bg_ext = "gif"
     st.markdown(
     f"""
     <style>
     .reportview-container {{
         background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+        
     }}
     </style>
     """,
     unsafe_allow_html=True
 )
+    
+    st.title("Book Donation")
+    
     st.markdown("BOOK DONATION")
     img = Image.open("BookDonation.jpg")
     st.image(img, caption='Book Donation',width=700)
@@ -47,7 +49,6 @@ def addData(a,b,c):
     conn.commit()
     conn.close()
     st.success("Successfully inserted")
-    #cursor.commit()
     
 
     
