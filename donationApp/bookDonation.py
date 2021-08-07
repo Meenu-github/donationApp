@@ -1,19 +1,9 @@
 import streamlit as st
 from PIL import Image
-import sys
-import pyodbc as odbc
 import base64
-
-records = []
-DRIVER = "ODBC Driver 17 for SQL Server"
-SERVER_NAME = "tcp:MEENU\SQLEXPRESS.database.windows.net"
-DATABASE_NAME="StreamLit"
-cnxn = f"""
-    Driver={{{DRIVER}}};
-    Server={SERVER_NAME};
-    Database={DATABASE_NAME};
-    Trusted_Connection=yes;
-"""
+import sqlite3
+conn = sqlite3.connect('data.db',check_same_thread=False)
+cur = conn.cursor()
 
 
 def bookdonate():
@@ -51,12 +41,13 @@ def bookdonate():
             st.info("Please submit the form.")
 def addData(a,b,c):
 
-    conn = odbc.connect(cnxn)
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO Book_Donation VALUES (?, ?, ?)', (a,b,c))
-
+    cur.execute("""CREATE TABLE IF NOT EXISTS book(NAME TEXT(50),
+               ADDRESS TEXT(50), PHONE_NO  TEXT(15)); """) 
+    cur.execute("INSERT INTO book VALUES (?,?,?)",(a,b,c))
+    conn.commit()
+    conn.close()
     st.success("Successfully inserted")
     #cursor.commit()
-    cursor.close()
+    
 
     

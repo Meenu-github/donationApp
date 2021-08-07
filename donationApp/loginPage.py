@@ -1,22 +1,10 @@
 from donationApp.bloodDonation import addData
 import streamlit as st
-import pandas as pd
+#import pandas as pd
 import base64
-import sys
-import pyodbc as odbc
-
-
-DRIVER = "ODBC Driver 17 for SQL Server"
-SERVER_NAME = "tcp:MEENU\SQLEXPRESS.database.windows.net"
-DATABASE_NAME="StreamLit"
-cnxn = f"""
-    Driver={{{DRIVER}}};
-    Server={SERVER_NAME};
-    Database={DATABASE_NAME};
-    Trusted_Connection=yes;
-"""
-
-records = []
+import sqlite3
+conn = sqlite3.connect('data.db',check_same_thread=False)
+cur = conn.cursor()
 
 def type(selectRole):
     #st.title("Blood Donation")
@@ -35,32 +23,32 @@ def type(selectRole):
 )
     if selectRole == 'Hospital':
         st.success("Data of blood donor")
-        conn = odbc.connect(cnxn)
-        cursor = conn.cursor()
-        tabl = 'SELECT * From Blood_Donation'
-        cursor.execute(tabl)
-        output = cursor.fetchall()
+        conn = sqlite3.connect('data.db',check_same_thread=False)
+        cur = conn.cursor()
+        tabl = 'SELECT * From blood'
+        cur.execute(tabl)
+        output = cur.fetchall()
         for x in output:
             st.write(x)
-        cursor.close()
+        cur.close()
     
     if selectRole == 'Food Distributor':
         st.success("Data of food donor")
-        conn = odbc.connect(cnxn)
-        cursor = conn.cursor()
-        tab2 = 'SELECT * From Food_Donation'
-        cursor.execute(tab2)
-        output = cursor.fetchall()
+        conn = sqlite3.connect('data.db',check_same_thread=False)
+        cur = conn.cursor()
+        tab2 = 'SELECT * From food'
+        cur.execute(tab2)
+        output = cur.fetchall()
         for x in output:
             st.write(x)
-        cursor.close()
+        cur.close()
         
 
     if selectRole == 'Orphanage':
         st.success("Data of book donor")
-        conn = odbc.connect(cnxn)
+        conn = sqlite3.connect('data.db',check_same_thread=False)
         cursor = conn.cursor()
-        tab3 = 'SELECT * From Book_Donation'
+        tab3 = 'SELECT * From book'
         cursor.execute(tab3)
         output = cursor.fetchall()
         for x in output:
@@ -119,7 +107,7 @@ def loginPages():
             passw = st.text_input("Password", type="password")
             submissionButton = st.form_submit_button(label="Login")
             if submissionButton == True:
-                match = 'SELECT Orole FROM Organization WHERE email='"+ userName + "' AND password= '"+ passw+"''
+                match = "SELECT ROL_E FROM organization WHERE EMAIL==userName AND PASSW==passw"
                 
 
                 if match!=None:
@@ -129,14 +117,14 @@ def loginPages():
                     st.error("either username or password is incorrect")
 
 def addData(a,b,c,d):
+    cur.execute("""CREATE TABLE IF NOT EXISTS organization(NAME TEXT(50),
+                    EMAIL TEXT(30), PASSW  TEXT(20), ROL_E TEXT(25)); """) 
+    cur.execute("INSERT INTO organization VALUES (?,?,?,?)",(a,b,c,d))
+    conn.commit()
+    conn.close()
+    st.success("Successfully registered")
     
-    conn = odbc.connect(cnxn)
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO Organization VALUES (?,?,?,?);', (a,b,c,d))
     
-    st.success("Successfully inserted")
-    #cursor.commit()
-    cursor.close()
 
     
 
