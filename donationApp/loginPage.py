@@ -28,8 +28,8 @@ def type(selectRole):
         tabl = 'SELECT * From blood'
         cur.execute(tabl)
         output = cur.fetchall()
-        for x in output:
-            st.write(x)
+        st.table(output)
+        
         cur.close()
     
     if selectRole == 'Food Distributor':
@@ -39,8 +39,8 @@ def type(selectRole):
         tab2 = 'SELECT * From food'
         cur.execute(tab2)
         output = cur.fetchall()
-        for x in output:
-            st.write(x)
+        st.table(output)
+        
         cur.close()
         
 
@@ -51,8 +51,8 @@ def type(selectRole):
         tab3 = 'SELECT * From book'
         cursor.execute(tab3)
         output = cursor.fetchall()
-        for x in output:
-            st.write(x)
+        st.table(output)
+        
         cursor.close()
         #tabl = pd.read_sql_query('SELECT * From Book_Donation',DRIVER)
         #st.table(tabl)
