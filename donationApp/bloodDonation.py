@@ -20,8 +20,7 @@ def bloodDonate() :
     """,
     unsafe_allow_html=True
 )
-    st.title("Blood Donation")
-    
+    st.markdown("<h1 style='text-align: left; color: aquamarine;'>Blood Donation</h1>", unsafe_allow_html=True)
     
 
     img = Image.open("_bloodDonation.jpg")

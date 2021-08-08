@@ -18,9 +18,10 @@ def foodDonate() :
     """,
     unsafe_allow_html=True
 )
-    st.title("Food Donation")
     
-    st.markdown("FOOD DONATION")
+    
+    st.markdown("<h1 style='text-align: left; color: peachpuff;'>Food Donation</h1>", unsafe_allow_html=True)
+    
     img = Image.open("FoodDonation.jpg")
     st.image(img, caption='Food Donation',width=500)
     st.title("Welcome to the food donation page, your donated food can bring hope in someones life of survival.\nCome let us donate food for needy one.\nYou don't have to walk and donate it you just have to register yourself and we will pick the food from your house address that will be provided.")

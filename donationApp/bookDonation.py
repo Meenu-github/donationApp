@@ -21,9 +21,10 @@ def bookdonate():
     unsafe_allow_html=True
 )
     
-    st.title("Book Donation")
     
-    st.markdown("BOOK DONATION")
+    
+    st.markdown("<h1 style='text-align: left; color: yellow;'>Book Donation</h1>", unsafe_allow_html=True)
+    
     img = Image.open("BookDonation.jpg")
     st.image(img, caption='Book Donation',width=700)
     st.title(" Welcome to the book donation page, your old book can bring light in someones future.\nCome let us donate books for needy one.\nYou don't have to walk and donate it you just have to register yourself and we will pick the book from your house address that will be provided.")

@@ -15,9 +15,11 @@ def front_page():
         """,
         unsafe_allow_html=True
     )
-
-    st.title("Donation")
-    st.header(" Welcome to the Donation page.")
+    st.markdown("<h1 style='text-align: left; color: greenyellow;'>Donation</h1>", unsafe_allow_html=True)
+    
+    st.markdown("<h1 style='text-align: left; color: greenyellow;'>Welcome to the Donation page.</h1>", unsafe_allow_html=True)
+    
+    
 
     st.subheader("Let us come together and donate something for the needy.")
     menu = ["None", "Book Donation", "Blood Donation","Food Donation","Organization Login/Register"]
