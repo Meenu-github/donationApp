@@ -38,6 +38,7 @@ def foodDonate() :
             st.info("Please submit the form.")
 
 def addData(a,b,c):
+    cur = conn.cursor()
     cur.execute("""CREATE TABLE IF NOT EXISTS food(NAME TEXT(50),
                 ADDRESS TEXT(50), PHONE_NO  TEXT(15)); """) 
     cur.execute("INSERT INTO food VALUES (?,?,?)",(a,b,c))
