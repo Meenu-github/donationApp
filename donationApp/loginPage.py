@@ -118,7 +118,7 @@ def addData(a,b,c,d):
                     EMAIL TEXT(30), PASSW  TEXT(20), ROL_E TEXT(25)); """) 
     cur.execute("INSERT INTO organization VALUES (?,?,?,?)",(a,b,c,d))
     conn.commit()
-    conn.close()
+    
     st.success("Successfully registered")
     
     
