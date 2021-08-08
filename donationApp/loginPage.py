@@ -112,6 +112,7 @@ def loginPages():
                             
                 else:
                     st.error("either username or password is incorrect")
+        
 
 def addData(a,b,c,d):
     cur.execute("""CREATE TABLE IF NOT EXISTS organization(NAME TEXT(50),
