@@ -47,7 +47,7 @@ def addData(a,b,c):
                ADDRESS TEXT(50), PHONE_NO  TEXT(15)); """) 
     cur.execute("INSERT INTO book VALUES (?,?,?)",(a,b,c))
     conn.commit()
-    
+    conn.close()
     st.success("Successfully inserted")
     
 
