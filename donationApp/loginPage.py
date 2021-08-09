@@ -94,7 +94,7 @@ def loginPages():
                 
 
     if page == 'Login' :
-        cur = conn.cursor()
+        #cur = conn.cursor()
         with st.form(key="Login") :
 
             userName = st.text_input("Username")
