@@ -94,9 +94,9 @@ def loginPages():
                 
 
     if page == 'Login' :
-        #cur = conn.cursor()
+        
         with st.form(key="Login") :
-
+            retrieved_role = None
             userName = st.text_input("Username")
             passw = st.text_input("Password", type="password")
             submissionButton = st.form_submit_button(label="Login")
