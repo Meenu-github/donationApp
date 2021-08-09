@@ -3,7 +3,7 @@ from PIL import Image
 import base64
 import sqlite3
 conn = sqlite3.connect('data.db',check_same_thread=False)
-
+cur = conn.cursor()
 def foodDonate() :
     main_bg = "bg.jpg"
     main_bg_ext = "jpg"

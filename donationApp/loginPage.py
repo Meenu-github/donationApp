@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 import sqlite3
 conn = sqlite3.connect('data.db',check_same_thread=False)
-
+cur = conn.cursor()
 
 def type(selectRole):
     
