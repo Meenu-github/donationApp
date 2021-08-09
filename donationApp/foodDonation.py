@@ -44,7 +44,7 @@ def addData(a,b,c):
                 ADDRESS TEXT(50), PHONE_NO  TEXT(15)); """) 
     cur.execute("INSERT INTO food VALUES (?,?,?)",(a,b,c))
     conn.commit()
-    conn.close()
+    #conn.close()
     st.success("Successfully inserted")
     
     

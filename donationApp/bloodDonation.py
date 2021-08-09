@@ -47,7 +47,7 @@ def addData(a,b,c,d,e):
                 BLOOD_GROUP TEXT(5), AGE TEXT(3), PHONE_NO  TEXT(15), DAT_E TEXT(10)); """) 
     cur.execute("INSERT INTO blood VALUES (?,?,?,?,?)",(a,b,c,d,e))
     conn.commit()
-    conn.close()
+    #conn.close()
     st.success("Successfully inserted")
 
     
