@@ -6,14 +6,14 @@ cur = conn.cursor()
 
 def type(selectRole):
     
-    main_bg = "black-and-white-gif-background-8.gif"
+    main_bg = "anim.gif"
     main_bg_ext = "gif"
     st.markdown(
     f"""
     <style>
     .reportview-container {{
         background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
-        
+        background-position: center; background-size:cover; background-repeat: no repeat
     }}
     </style>
     """,
@@ -55,13 +55,14 @@ def type(selectRole):
              
 def loginPages():
     
-    main_bg = "black-and-white-gif-background-8.gif"
+    main_bg = "anim.gif"
     main_bg_ext = "gif"
     st.markdown(
     f"""
     <style>
     .reportview-container {{
         background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+        background-position: center; background-size:cover; background-repeat: no repeat
     }}
     </style>
     """,
