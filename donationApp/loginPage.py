@@ -28,7 +28,7 @@ def type(selectRole):
         output = cur.fetchall()
         st.table(output)
         
-        #cur.close()
+        cur.close()
     
     if selectRole == 'Food Distributor':
         st.success("Data of food donor")
@@ -39,7 +39,7 @@ def type(selectRole):
         output = cur.fetchall()
         st.table(output)
         
-        #cur.close()
+        cur.close()
         
 
     if selectRole == 'Orphanage':
@@ -51,7 +51,7 @@ def type(selectRole):
         output = cursor.fetchall()
         st.table(output)
         
-        #cursor.close()
+        cursor.close()
              
 def loginPages():
     
@@ -117,12 +117,12 @@ def loginPages():
         
 
 def addData(a,b,c,d):
-    cur = conn.cursor()
+    
     cur.execute("""CREATE TABLE IF NOT EXISTS organization(NAME TEXT(50),
                     EMAIL TEXT(30), PASSW  TEXT(20), ROL_E TEXT(25)); """) 
     cur.execute("INSERT INTO organization VALUES (?,?,?,?)",(a,b,c,d))
     conn.commit()
-    #conn.close()
+    conn.close()
     st.success("Successfully registered")
     
     
