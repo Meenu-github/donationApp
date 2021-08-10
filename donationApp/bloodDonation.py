@@ -21,7 +21,7 @@ def bloodDonate() :
 )
     st.markdown("<h1 style='text-align: left; color: aquamarine;'>Blood Donation</h1>", unsafe_allow_html=True)
     
-
+    
     img = Image.open("_bloodDonation.jpg")
     st.image(img, caption='Blood Donation', width=500)
     st.write("This is the blood donation page.")

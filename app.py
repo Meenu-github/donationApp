@@ -15,6 +15,11 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+video_file = open('Quickstart to Donation App.webm', 'rb')
+video_bytes = video_file.read()
+st.markdown("<h1 style='text-align: left; color: greenyellow;'>Quickstart to the donation app 👇</h1>", unsafe_allow_html=True)
+
+st.video(video_bytes, format="video/mp4", start_time=0)
 st.markdown("<h1 style='text-align: left; color: greenyellow;'>Donation</h1>", unsafe_allow_html=True)
 
 st.markdown("<h1 style='text-align: left; color: greenyellow;'>Welcome to the Donation page.</h1>", unsafe_allow_html=True)
