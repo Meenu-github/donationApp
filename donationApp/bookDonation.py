@@ -2,8 +2,7 @@ import streamlit as st
 from PIL import Image
 import base64
 import sqlite3
-conn = sqlite3.connect('data.db',check_same_thread=False)
-cur = conn.cursor()
+
 
 
 def bookdonate():
@@ -44,9 +43,9 @@ def bookdonate():
         else:
             st.info("Please submit the form.")
 def addData(a,b,c):
-    
-    cur.execute("""CREATE TABLE IF NOT EXISTS book(NAME TEXT(50),
-               ADDRESS TEXT(50), PHONE_NO  TEXT(15)); """) 
+    conn = sqlite3.connect('data.db',check_same_thread=False)
+    cur = conn.cursor()
+    cur.execute("""CREATE TABLE IF NOT EXISTS book(NAME TEXT(50),ADDRESS TEXT(50), PHONE_NO  TEXT(15)); """) 
     cur.execute("INSERT INTO book VALUES (?,?,?)", (a,b,c))
     conn.commit()
     conn.close()

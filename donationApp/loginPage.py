@@ -1,8 +1,7 @@
 import streamlit as st
 import base64
 import sqlite3
-conn = sqlite3.connect('data.db',check_same_thread=False)
-cur = conn.cursor()
+
 
 def type(selectRole):
     
@@ -94,6 +93,7 @@ def loginPages():
                 
 
     if page == 'Login' :
+        conn = sqlite3.connect('data.db',check_same_thread=False)
         cur = conn.cursor()
         with st.form(key="Login") :
             retrieved_role = None
@@ -117,6 +117,8 @@ def loginPages():
         
 
 def addData(a,b,c,d):
+    conn = sqlite3.connect('data.db',check_same_thread=False)
+    cur = conn.cursor()
     
     cur.execute("""CREATE TABLE IF NOT EXISTS organization(NAME TEXT(50),
                     EMAIL TEXT(30), PASSW  TEXT(20), ROL_E TEXT(25)); """) 
