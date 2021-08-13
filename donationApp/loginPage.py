@@ -1,7 +1,8 @@
 import streamlit as st
 import base64
 import sqlite3
-
+conn = sqlite3.connect('data.db',check_same_thread=False)
+cur = conn.cursor()
 
 def type(selectRole):
     
@@ -44,13 +45,13 @@ def type(selectRole):
     if selectRole == 'Orphanage':
         st.success("Data of book donor")
         conn = sqlite3.connect('data.db',check_same_thread=False)
-        cursor = conn.cursor()
+        curso = conn.cursor()
         tab3 = 'SELECT * From book'
-        cursor.execute(tab3)
-        output = cursor.fetchall()
+        curso.execute(tab3)
+        output = curso.fetchall()
         st.table(output)
         
-        cursor.close()
+        curso.close()
              
 def loginPages():
     
@@ -124,7 +125,7 @@ def addData(a,b,c,d):
                     EMAIL TEXT(30), PASSW  TEXT(20), ROL_E TEXT(25)); """) 
     cur.execute("INSERT INTO organization VALUES (?,?,?,?)",(a,b,c,d))
     conn.commit()
-    conn.close()
+    
     st.success("Successfully registered")
     
     
