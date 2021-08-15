@@ -39,8 +39,7 @@ def foodDonate() :
             st.info("Please submit the form.")
 
 def addData(a,b,c):
-    conn = sqlite3.connect('data.db',check_same_thread=False)
-    cur = conn.cursor()
+    
     cur.execute("""CREATE TABLE IF NOT EXISTS food(NAME TEXT(50), ADDRESS TEXT(50), PHONE_NO  TEXT(15)); """) 
     cur.execute("INSERT INTO food VALUES (?,?,?)",(a,b,c))
     conn.commit()

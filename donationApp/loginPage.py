@@ -118,8 +118,7 @@ def loginPages():
         
 
 def addData(a,b,c,d):
-    conn = sqlite3.connect('data.db',check_same_thread=False)
-    cur = conn.cursor()
+    
     
     cur.execute("""CREATE TABLE IF NOT EXISTS organization(NAME TEXT(50),
                     EMAIL TEXT(30), PASSW  TEXT(20), ROL_E TEXT(25)); """) 
