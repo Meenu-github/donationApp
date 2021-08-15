@@ -46,7 +46,7 @@ def addData(a,b,c,d,e):
     cur.execute("""CREATE TABLE IF NOT EXISTS blood(NAME TEXT(50),BLOOD_GROUP TEXT(5), AGE TEXT(3), PHONE_NO  TEXT(15), DAT_E TEXT(10)); """) 
     cur.execute("INSERT INTO blood VALUES (?,?,?,?,?)",(a,b,c,d,e))
     conn.commit()
-    
+    conn.close()
     st.success("Successfully inserted")
 
     

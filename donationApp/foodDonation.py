@@ -17,7 +17,7 @@ def foodDonate() :
     </style>
     """,
     unsafe_allow_html=True
-)
+                )
     
     
     st.markdown("<h1 style='text-align: left; color: peachpuff;'>Food Donation</h1>", unsafe_allow_html=True)
@@ -43,7 +43,7 @@ def addData(a,b,c):
     cur.execute("""CREATE TABLE IF NOT EXISTS food(NAME TEXT(50), ADDRESS TEXT(50), PHONE_NO  TEXT(15)); """) 
     cur.execute("INSERT INTO food VALUES (?,?,?)",(a,b,c))
     conn.commit()
-    
+    conn.close()
     st.success("Successfully inserted")
     
     
