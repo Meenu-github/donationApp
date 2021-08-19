@@ -1,10 +1,14 @@
 import streamlit as st
 from donationApp import bookDonation, bloodDonation, foodDonation, firstpage, loginPage
 import base64
-from win32com.client import Dispatch
+from gtts import gTTS
+import os    
 
-speak = Dispatch("SAPI.SpVoice").Speak
-speak("Welcome..., to the donation app! here are 3 options available for donor to donate: 1: Book 2: blood 3: food. There is also a video for getting started for the donation app you can find it below.")
+tts = gTTS(text="Hi user, This is your guide of the donation app, you are now at the donation app home page, you can donate food, blood and books here and if you are a distributor of these things then you can register yourself and fetch the data of donor and get the donation and then distribute it.", lang='en')
+tts.save("pcvoice.mp3")
+# to start the file from python
+os.system("start pcvoice.mp3")
+
 
 
 main_bg = "bg.jpg"
