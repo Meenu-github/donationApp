@@ -1,6 +1,11 @@
 import streamlit as st
 from donationApp import bookDonation, bloodDonation, foodDonation, firstpage, loginPage
 import base64
+from win32com.client import Dispatch
+
+speak = Dispatch("SAPI.SpVoice").Speak
+speak("Welcome..., to the donation app! here are 3 options available for donor to donate: 1: Book 2: blood 3: food. There is also a video for getting started for the donation app you can find it below.")
+
 
 main_bg = "bg.jpg"
 main_bg_ext = "jpg"
@@ -15,7 +20,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-video_file = open('Quickstart to Donation App.webm', 'rb')
+
+video_file = open('Quickstart to Donation App.webm', 'rb') #rb opens the file in binary format for reading
 video_bytes = video_file.read()
 st.markdown("<h1 style='text-align: left; color: greenyellow;'>Quickstart to the donation app 👇</h1>", unsafe_allow_html=True)
 
