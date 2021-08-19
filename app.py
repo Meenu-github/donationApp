@@ -1,14 +1,11 @@
 import streamlit as st
 from donationApp import bookDonation, bloodDonation, foodDonation, firstpage, loginPage
 import base64
-import pyttsx3
-engine = pyttsx3.init()
+from subprocess import call
 
-engine.say("Hi user, this is you guide.")
-engine.say("You can use this donation web app to donate book, food, blood.")
-engine.say("Here is the quickstart to the donation app you can refer this video for help.")
+call(["espeak", "-v", "mb-us1", "Hello, I am espeak, this is you guide.You can use this donation web app to donate book, food, blood.Here is the quickstart to the donation app you can refer this video for help."]) 
 
-engine.runAndWait()
+
 
 
 
