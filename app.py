@@ -1,13 +1,10 @@
 import streamlit as st
 from donationApp import bookDonation, bloodDonation, foodDonation, firstpage, loginPage
 import base64
-from subprocess import call
+audio_file = open('pcvoice.mp3', 'rb')
+audio_bytes = audio_file.read()
 
-call(["espeak", "-v", "mb-us1", "Hello, I am espeak, this is you guide.You can use this donation web app to donate book, food, blood.Here is the quickstart to the donation app you can refer this video for help."]) 
-
-
-
-
+st.audio(audio_bytes, format='audio/mp3')
 
 main_bg = "bg.jpg"
 main_bg_ext = "jpg"
