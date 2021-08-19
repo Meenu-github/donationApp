@@ -1,13 +1,14 @@
 import streamlit as st
 from donationApp import bookDonation, bloodDonation, foodDonation, firstpage, loginPage
 import base64
-from gtts import gTTS
-import os    
+import pyttsx3
+engine = pyttsx3.init()
 
-tts = gTTS(text="Hi user, This is your guide of the donation app, you are now at the donation app home page, you can donate food, blood and books here and if you are a distributor of these things then you can register yourself and fetch the data of donor and get the donation and then distribute it.", lang='en')
-tts.save("pcvoice.mp3")
-# to start the file from python
-os.system("start pcvoice.mp3")
+engine.say("Hi user, this is you guide.")
+engine.say("You can use this donation web app to donate book, food, blood.")
+engine.say("Here is the quickstart to the donation app you can refer this video for help.")
+
+engine.runAndWait()
 
 
 
