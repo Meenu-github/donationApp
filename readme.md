@@ -1,12 +1,5 @@
-Just add a Good Description of Your Project to help people goign thorugh your GitHub understand better. Pasting a demo tempalte below
+Donation App is basically the integration of blood, books and food donation. A person can donate by simply adding his/her details. At the same the time an organization can register themself and see the details of the donor and hence can approach them for the same.
 
-
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
 
 
 
@@ -18,35 +11,35 @@ Just add a Good Description of Your Project to help people goign thorugh your Gi
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
+<!-- [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/Meenu-github/donationApp">
+    <img src="https://github.com/Meenu-github/donationApp/blob/main/logoPythu.jpg" alt="Logo" width="200" height="200">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Team Pythusiasts</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An Awesome Simple project made on Streamlit
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://share.streamlit.io/meenu-github/donationapp/main/app.py"><strong>Explore the project »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://youtu.be/svsnV2Gq0RU">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/Meenu-github/donationApp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/Meenu-github/donationApp/issues">Request Feature</a>
   </p>
 </p>
 
@@ -83,25 +76,25 @@ Just add a Good Description of Your Project to help people goign thorugh your Gi
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Donation App][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+There are many donation app but all of them are used for one kind of donation only, however, I tried to integrate some different kinds of donation app in one web app.
 
 Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+* Your time should be saved by not visiting one platform to another platform for donation. 
+* Over money we should prefer food to donate because it is one of the basic needs that a person have.
+* Book donation is a good start to help someone to make his future bright.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+
 
 A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+* [Streamlit](https://streamlit.io/)
+* [SQLite](https://sqlite.org/index.html)
+* [Python](https://www.python.org/)
 
 
 
@@ -114,14 +107,16 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* python
+* Streamlit
+* Sqlite
   ```sh
   npm install npm@latest -g
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get started with at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
