@@ -63,11 +63,11 @@ Donation App is basically the integration of blood, books and food donation. A p
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#contributors">Contributors</a></li>
+    <li><a href="#mentor">Mentor</a></li>
   </ol>
 </details>
 
@@ -75,8 +75,16 @@ Donation App is basically the integration of blood, books and food donation. A p
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<p align="center">
+  <a href="https://github.com/Meenu-github/donationApp">
+    <img src="https://github.com/Meenu-github/donationApp/blob/main/Donationapp_ss.png" alt="Logo" width="800" height="500">
+  </a>
 
-[![Donation App][product-screenshot]](https://example.com)
+  <h3 align="center">Donation app screenshot</h3>
+
+  <p align="center">
+
+
 
 There are many donation app but all of them are used for one kind of donation only, however, I tried to integrate some different kinds of donation app in one web app.
 
@@ -116,18 +124,18 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get started with at [https://example.com](https://example.com)
+1. Get started with at [Donation app](https://github.com/Meenu-github/donationApp)
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/Meenu-github/donationApp
    ```
-3. Install NPM packages
+3. Install streamlit packages
    ```sh
-   npm install
+   pip install streamlit
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+4. Import the streamlit package 
+   ```py
+   import streamlit as st
    ```
 
 
@@ -135,16 +143,11 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Use this app to donate food, books and blood.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more, please refer to the [video](https://youtu.be/svsnV2Gq0RU)_
 
 
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
 
 
 
@@ -161,19 +164,13 @@ Contributions are what make the open source community such an amazing place to l
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Meenu Singh - [@_meenu_._._](https://www.instagram.com/_meenu_._._/) - meenubgp005@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/Meenu-github/donationApp](https://github.com/Meenu-github/donationApp)
 
 
 
@@ -190,23 +187,21 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 * [Sticky Kit](http://leafo.net/sticky-kit)
 * [JVectorMap](http://jvectormap.com)
 * [Font Awesome](https://fontawesome.com)
+  
+<!-- CONTRIBUTORS -->
+## Contributors
+* [Meenu Singh](https://github.com/Meenu-github)
+* [Kaviya Gopi](https://github.com/KaviyaGopi)
+* [Raghul Srinivas](https://github.com/RAGHULSRINIVAS112)
+* [Aditya Upadhye](https://github.com/aditya-upadhye)
+* [Snowlin Paz David](https://github.com/SnowlinPazDavid)
+* [Rebecca](https://github.com/rebs-becca15)
+  
+<!-- MENTOR -->
+  
+## Mentor
+* [Sagnik Mitra](https://github.com/sagnikmitra)
 
 
 
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
